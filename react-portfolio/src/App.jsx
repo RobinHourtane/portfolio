@@ -3,13 +3,10 @@ function App() {
     <div className="min-h-screen flex flex-col">
       <header className="border-b border-slate-800 bg-slate-950/80 backdrop-blur">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <span className="text-slate-200 font-semibold tracking-tight">
-            robin-hourtane.dev
-          </span>
-          <nav className="hidden gap-6 text-sm text-slate-400 md:flex">
-            <a href="#" className="hover:text-slate-100 transition-colors">
-              _home
+        <a href="#" className="hover:text-slate-100 transition-colors">
+              robin.hourtane
             </a>
+          <nav className="hidden gap-6 text-sm text-slate-400 md:flex">
             <a href="#" className="hover:text-slate-100 transition-colors">
               _projects
             </a>
