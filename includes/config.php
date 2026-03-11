@@ -21,5 +21,5 @@ session_start([
     'use_strict_mode' => true,
 ]);
 
-define('SITE_URL', 'https://robin.portfolio.robin-hourtane.fr/'); // Ton URL o2switch
+define('SITE_URL', 'https://robin-hourtane.fr/'); // Ton URL principal
 ?>
