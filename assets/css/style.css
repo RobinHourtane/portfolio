@@ -78,10 +78,11 @@ body {
 .hero {
     height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    padding-top: 8rem;
 }
 
 .hero-bg-blur {
