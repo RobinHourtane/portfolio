@@ -57,7 +57,7 @@ require_once 'includes/header.php';
                             <div class="folder-header" onclick="toggleFolder(this)">
                         <i class="fas fa-chevron-down arrow-icon"></i>
                         <i class="fas fa-folder-open folder-icon" style="color: #4D5BCE;"></i>
-                                <span>education</span>
+                                <span>Education</span>
                             </div>
                             <div class="folder-children">
                                 <div class="file" onclick="openFile('diplomas', this)" data-image="education-image">
