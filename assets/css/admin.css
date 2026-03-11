@@ -1,0 +1,35 @@
+/* Import styles from main style but override for admin specifics */
+@import 'style.css';
+
+.admin-layout { display: flex; min-height: 100vh; padding-top: 55px; }
+.admin-sidebar { width: 250px; background: var(--bg-darker); border-right: 1px solid var(--border); position: fixed; height: 100%; left: 0; }
+.admin-content { flex: 1; padding: 2rem; margin-left: 250px; }
+
+.admin-nav-item {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+}
+.admin-nav-item:hover, .admin-nav-item.active {
+    background: rgba(255,255,255,0.03);
+    color: var(--text-main);
+    border-left-color: var(--accent-turquoise);
+}
+
+.data-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.data-table th, .data-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+.data-table th { color: var(--text-main); }
+
+.badge { padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+.badge-success { background: rgba(67, 217, 173, 0.2); color: var(--accent-turquoise); }
+.badge-warning { background: rgba(233, 146, 135, 0.2); color: var(--accent-rose); }
+
+.alert { padding: 1rem; margin-bottom: 1rem; border-radius: 4px; border: 1px solid transparent; }
+.alert-success { border-color: var(--accent-turquoise); background: rgba(67, 217, 173, 0.1); color: var(--accent-turquoise); }
+.alert-danger { border-color: var(--accent-rose); background: rgba(233, 146, 135, 0.1); color: var(--accent-rose); }
+
+/* Login Page Specific */
+.login-wrapper { height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-dark); }
+.login-box { width: 100%; max-width: 400px; padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-darker); }

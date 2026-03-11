@@ -1,0 +1,21 @@
+# Protection de l'arborescence
+Options -Indexes
+
+# Empêcher l'accès direct aux fichiers include
+<FilesMatch "^(config|functions|header|footer)\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protection fichier .env ou .git si existants
+<FilesMatch "^\.(env|git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Redirection HTTPS (recommandé chez o2switch)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>

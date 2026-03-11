@@ -1,0 +1,22 @@
+# Secrets / config locale
+.env
+**/.env
+
+# Dumps / bases de données (ne jamais versionner en public)
+database.sql
+*.sql
+
+# Uploads et médias générés
+uploads/
+
+# Dépendances / caches
+node_modules/
+vendor/
+.cache/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
