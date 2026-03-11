@@ -13,7 +13,7 @@ require_once 'includes/header.php';
     <div class="hero-bg-blur blur-2"></div>
 
     <div class="container flex-center" style="height: 100%;">
-        <div class="hero-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+        <div class="hero-grid">
             
             <div class="hero-content">
                 <p style="color: var(--text-secondary); font-size: 1.1rem;">Salut ! Je suis</p>
@@ -31,7 +31,7 @@ require_once 'includes/header.php';
                 </div>
             </div>
 
-            <div class="hero-visual" style="display: none; @media(min-width: 1024px){display:block;}">
+            <div class="hero-visual">
                 </div>
             
         </div>
