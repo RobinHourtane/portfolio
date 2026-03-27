@@ -17,24 +17,41 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <body>
 
 <nav class="navbar">
-    <div class="nav-brand">Robin-Hourtané</div>
+    <a href="index.php" class="nav-brand">Robin-Hourtané</a>
     
-    <div class="mobile-toggle">
-        <i class="fas fa-bars"></i>
-    </div>
+    <button
+        class="mobile-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-controls="site-menu"
+        aria-expanded="false"
+    >
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
 
-    <div class="nav-menu">
-        <a href="index.php" class="nav-link <?= $current_page == 'index.php' ? 'active' : '' ?>">
-            _Bienvenue
-        </a>
-        <a href="about.php" class="nav-link <?= $current_page == 'about.php' ? 'active' : '' ?>">
-            _À propos
-        </a>
-        <a href="projects.php" class="nav-link <?= $current_page == 'projects.php' ? 'active' : '' ?>">
-            _projets
-        </a>
-        <a href="contact.php" class="nav-link <?= $current_page == 'contact.php' ? 'active' : '' ?>">
-            contactez_moi
-        </a>
+    <div class="nav-menu" id="site-menu" aria-hidden="false">
+        <div class="nav-menu-panel">
+            <div class="nav-menu-header">
+                <a href="index.php" class="nav-menu-brand">Robin-Hourtané</a>
+                <button class="nav-close" type="button" aria-label="Fermer le menu">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="nav-menu-links">
+                <a href="index.php" class="nav-link <?= $current_page == 'index.php' ? 'active' : '' ?>">
+                    _Bienvenue
+                </a>
+                <a href="about.php" class="nav-link <?= $current_page == 'about.php' ? 'active' : '' ?>">
+                    _À propos
+                </a>
+                <a href="projects.php" class="nav-link <?= $current_page == 'projects.php' ? 'active' : '' ?>">
+                    _projets
+                </a>
+                <a href="contact.php" class="nav-link <?= $current_page == 'contact.php' ? 'active' : '' ?>">
+                    contactez_moi
+                </a>
+            </div>
+        </div>
     </div>
 </nav>

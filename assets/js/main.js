@@ -1,13 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- Mobile Menu Toggle ---
+    const body = document.body;
     const mobileBtn = document.querySelector('.mobile-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const navClose = document.querySelector('.nav-close');
+    const navLinks = document.querySelectorAll('.nav-menu .nav-link');
     
-    if(mobileBtn) {
+    if (mobileBtn && navMenu) {
+        const setMenuState = (isOpen) => {
+            navMenu.classList.toggle('active', isOpen);
+            body.classList.toggle('menu-open', isOpen);
+            mobileBtn.setAttribute('aria-expanded', String(isOpen));
+            mobileBtn.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+            navMenu.setAttribute('aria-hidden', String(!isOpen));
+        };
+
+        const syncMenuForViewport = () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                body.classList.remove('menu-open');
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                mobileBtn.setAttribute('aria-label', 'Ouvrir le menu');
+                navMenu.setAttribute('aria-hidden', 'false');
+                return;
+            }
+
+            if (!navMenu.classList.contains('active')) {
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                mobileBtn.setAttribute('aria-label', 'Ouvrir le menu');
+                navMenu.setAttribute('aria-hidden', 'true');
+            }
+        };
+
+        syncMenuForViewport();
+
         mobileBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            setMenuState(!navMenu.classList.contains('active'));
         });
+
+        if (navClose) {
+            navClose.addEventListener('click', () => setMenuState(false));
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => setMenuState(false));
+        });
+
+        navMenu.addEventListener('click', (event) => {
+            if (event.target === navMenu) {
+                setMenuState(false);
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                setMenuState(false);
+            }
+        });
+
+        window.addEventListener('resize', syncMenuForViewport);
     }
 
     // --- Projects Filtering System ---
