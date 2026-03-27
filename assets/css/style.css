@@ -477,8 +477,9 @@ pre { margin: 0; font-family: var(--font-code); white-space: pre-wrap; }
         inset: 0;
         height: 100dvh;
         justify-content: flex-end;
-        background: rgba(1, 18, 33, 0.45);
+        background-color: rgba(1, 18, 33, 0.82);
         backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
@@ -502,6 +503,7 @@ pre { margin: 0; font-family: var(--font-code); white-space: pre-wrap; }
             radial-gradient(circle at top right, rgba(67, 217, 173, 0.15), transparent 35%),
             radial-gradient(circle at bottom left, rgba(77, 91, 206, 0.22), transparent 45%),
             linear-gradient(180deg, rgba(1, 22, 39, 0.98), rgba(1, 18, 33, 1));
+        background-color: var(--bg-darker);
         border-left: 1px solid var(--border);
         box-shadow: -20px 0 50px rgba(0, 0, 0, 0.35);
         transform: translateX(100%);
