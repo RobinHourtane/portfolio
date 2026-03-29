@@ -1,17 +1,17 @@
 <h1>Tableau de bord</h1>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
-    <div style="background: var(--bg-darker); padding: 1.5rem; border: 1px solid var(--border); border-radius: 8px;">
-        <h3 style="color: var(--text-secondary);">Projets en ligne</h3>
-        <p style="font-size: 2rem; color: var(--accent-turquoise);"><?= (int) $stats['projects'] ?></p>
+<div class="admin-stats-grid">
+    <div class="admin-stat-card">
+        <h3 class="admin-stat-title">Projets en ligne</h3>
+        <p class="admin-stat-value admin-stat-value--accent"><?= (int) $stats['projects'] ?></p>
     </div>
-    <div style="background: var(--bg-darker); padding: 1.5rem; border: 1px solid var(--border); border-radius: 8px;">
-        <h3 style="color: var(--text-secondary);">Messages non lus</h3>
-        <p style="font-size: 2rem; color: <?= $stats['messages'] > 0 ? 'var(--accent-rose)' : 'var(--text-main)' ?>;"><?= (int) $stats['messages'] ?></p>
+    <div class="admin-stat-card">
+        <h3 class="admin-stat-title">Messages non lus</h3>
+        <p class="admin-stat-value <?= $stats['messages'] > 0 ? 'admin-stat-value--alert' : 'admin-stat-value--neutral' ?>"><?= (int) $stats['messages'] ?></p>
     </div>
 </div>
 
-<h2 style="margin-top: 3rem;">Derniers messages</h2>
+<h2 class="admin-section-title">Derniers messages</h2>
 <table class="data-table">
     <thead>
         <tr>

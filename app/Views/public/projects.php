@@ -1,11 +1,5 @@
-<style>
-    .sidebar-content .file span {
-        text-transform: lowercase;
-    }
-</style>
-
 <div class="about-container">
-    <aside class="ide-sidebar">
+    <aside class="ide-sidebar projects-sidebar">
         <div class="sidebar-header">
             <span>EXPLORATEUR : PROJETS</span>
         </div>
@@ -52,7 +46,7 @@
             <div class="folder">
                 <div class="folder-header" onclick="toggleFolder(this)">
                     <i class="fas fa-chevron-down arrow-icon"></i>
-                    <i class="fas fa-folder-open folder-icon" style="color: #E99287;"></i>
+                    <i class="fas fa-folder-open folder-icon u-text-rose"></i>
                     <span>filtres</span>
                 </div>
 
@@ -60,16 +54,16 @@
                     <div class="folder">
                         <div class="folder-header" onclick="toggleFolder(this)">
                             <i class="fas fa-chevron-down arrow-icon"></i>
-                            <i class="fas fa-folder folder-icon" style="color: #43D9AD;"></i>
+                            <i class="fas fa-folder folder-icon u-text-turquoise"></i>
                             <span>par_categorie</span>
                         </div>
                         <div class="folder-children">
                             <div class="file" data-type="category" data-value="pro" onclick="toggleFilter(this)">
-                                <i class="fas fa-briefcase file-icon" style="color: #607B96;"></i>
+                                <i class="fas fa-briefcase file-icon u-text-secondary"></i>
                                 <span>professionnel</span>
                             </div>
                             <div class="file" data-type="category" data-value="university" onclick="toggleFilter(this)">
-                                <i class="fas fa-graduation-cap file-icon" style="color: #607B96;"></i>
+                                <i class="fas fa-graduation-cap file-icon u-text-secondary"></i>
                                 <span>universitaire</span>
                             </div>
                         </div>
@@ -78,13 +72,13 @@
                     <div class="folder">
                         <div class="folder-header" onclick="toggleFolder(this)">
                             <i class="fas fa-chevron-down arrow-icon"></i>
-                            <i class="fas fa-folder folder-icon" style="color: #E99287;"></i>
+                            <i class="fas fa-folder folder-icon u-text-rose"></i>
                             <span>par_competence</span>
                         </div>
                         <div class="folder-children">
                             <?php foreach ($projectTags as $tag): ?>
                                 <div class="file" data-type="competence" data-value="<?= escape($tag) ?>" onclick="toggleFilter(this)">
-                                    <i class="fas fa-tag file-icon" style="color: var(--accent-rose);"></i>
+                                    <i class="fas fa-tag file-icon u-text-rose"></i>
                                     <span><?= escape($tag) ?></span>
                                 </div>
                             <?php endforeach; ?>
@@ -94,20 +88,20 @@
                     <div class="folder">
                         <div class="folder-header" onclick="toggleFolder(this)">
                             <i class="fas fa-chevron-down arrow-icon"></i>
-                            <i class="fas fa-folder folder-icon" style="color: #4D5BCE;"></i>
+                            <i class="fas fa-folder folder-icon u-text-blue"></i>
                             <span>par_stack</span>
                         </div>
                         <div class="folder-children">
                             <div class="file" data-type="type" data-value="web_dev" onclick="toggleFilter(this)">
-                                <i class="fab fa-js file-icon" style="color: #E99287;"></i>
+                                <i class="fab fa-js file-icon u-text-rose"></i>
                                 <span>web_dev.ts</span>
                             </div>
                             <div class="file" data-type="type" data-value="communication" onclick="toggleFilter(this)">
-                                <i class="fas fa-bullhorn file-icon" style="color: #C98BDF;"></i>
+                                <i class="fas fa-bullhorn file-icon u-text-purple"></i>
                                 <span>com.md</span>
                             </div>
                             <div class="file" data-type="type" data-value="digital_creation" onclick="toggleFilter(this)">
-                                <i class="fas fa-paint-brush file-icon" style="color: #43D9AD;"></i>
+                                <i class="fas fa-paint-brush file-icon u-text-turquoise"></i>
                                 <span>design.css</span>
                             </div>
                         </div>
@@ -117,22 +111,22 @@
         </div>
     </aside>
 
-    <main class="ide-editor" style="background-color: var(--bg-darker);">
+    <main class="ide-editor projects-editor">
         <div class="editor-tabs">
-            <div class="tab" style="border-top: none; cursor: default;">
-                <span style="color: var(--text-secondary); font-size: 0.8rem;">filtres_actifs : </span>
-                <span id="active-filters-display" style="color: var(--accent-turquoise); margin-left: 10px;">Tous</span>
+            <div class="tab projects-filter-tab">
+                <span class="projects-filter-label">filtres_actifs : </span>
+                <span id="active-filters-display" class="projects-filter-value">Tous</span>
             </div>
         </div>
 
-        <div class="projects-grid" style="padding: 2rem; overflow-y: auto; height: 100%;">
+        <div class="projects-grid projects-grid-editor">
             <?php foreach ($projects as $project): ?>
                 <div class="project-card" data-category="<?= escape($project['category']) ?>" data-type="<?= escape($project['type']) ?>" data-competences="<?= escape($project['competences']) ?>">
-                    <div style="height: 180px; overflow: hidden; background: #000; position:relative; border-bottom: 1px solid var(--border);">
+                    <div class="project-card-media">
                         <?php if ($project['image_url']): ?>
                             <img src="<?= siteUrl('uploads/projects/' . $project['image_url']) ?>" alt="<?= escape($project['title']) ?>" class="project-thumb">
                         <?php else: ?>
-                            <div style="height:100%; display:flex; align-items:center; justify-content:center; background:var(--bg-dark); color:var(--text-secondary);">No Image</div>
+                            <div class="project-card-media-placeholder">No Image</div>
                         <?php endif; ?>
                     </div>
 
@@ -141,16 +135,16 @@
                         <p class="card-subtitle">// <?= escape($project['subtitle']) ?></p>
 
                         <?php if (!empty($project['software'])): ?>
-                            <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: -0.5rem; margin-bottom: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                <i class="fas fa-layer-group" style="margin-right: 5px;"></i> <?= escape($project['software']) ?>
+                            <p class="project-card-software">
+                                <i class="fas fa-layer-group project-card-software-icon"></i> <?= escape($project['software']) ?>
                             </p>
                         <?php endif; ?>
 
                         <?php $cardTags = !empty($project['competences']) ? explode(',', $project['competences']) : []; ?>
                         <?php if (!empty($cardTags)): ?>
-                            <div style="margin-bottom: 10px; display:flex; flex-wrap:wrap; gap:5px;">
+                            <div class="project-card-tags">
                                 <?php foreach ($cardTags as $tag): ?>
-                                    <span style="font-size: 0.7rem; color: var(--accent-blue); background: rgba(77,91,206,0.1); padding: 2px 5px; border-radius: 3px;">#<?= escape($tag) ?></span>
+                                    <span class="project-card-tag">#<?= escape($tag) ?></span>
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
@@ -159,15 +153,15 @@
                             <?= substr(escape($project['description']), 0, 100) ?>...
                         </div>
 
-                        <div class="project-card-actions" style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                        <div class="project-card-actions">
                             <a href="<?= siteUrl('project-detail.php?id=' . $project['id']) ?>" class="btn">Voir_projet</a>
-                            <div class="project-card-actions-icons" style="display:flex; gap:10px; align-items:center;">
+                            <div class="project-card-actions-icons">
                                 <?php if ($project['live_link']): ?>
-                                    <a href="<?= escape($project['live_link']) ?>" target="_blank" title="Live" style="color: var(--text-secondary);">
+                                    <a href="<?= escape($project['live_link']) ?>" target="_blank" title="Live" class="project-card-live-link">
                                         <i class="fas fa-external-link-alt"></i>
                                     </a>
                                 <?php endif; ?>
-                                <i class="fas fa-code" style="color: var(--text-secondary);"></i>
+                                <i class="fas fa-code project-card-code-icon"></i>
                             </div>
                         </div>
                     </div>
@@ -175,7 +169,7 @@
             <?php endforeach; ?>
 
             <?php if (empty($projects)): ?>
-                <p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">Aucun projet trouvé.</p>
+                <p class="projects-empty-state">Aucun projet trouvé.</p>
             <?php endif; ?>
         </div>
     </main>

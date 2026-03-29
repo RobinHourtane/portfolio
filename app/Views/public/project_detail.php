@@ -1,31 +1,18 @@
-<style>
-    .carousel-container { position: relative; width: 100%; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2rem; background: #000; }
-    .carousel-slide { display: none; width: 100%; height: auto; max-height: 500px; object-fit: contain; }
-    .carousel-slide.active { display: block; }
-    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 15px; cursor: pointer; font-size: 1.5rem; transition: background 0.3s; z-index: 10; }
-    .carousel-btn:hover { background: var(--accent-blue); }
-    .prev-btn { left: 0; }
-    .next-btn { right: 0; }
-    .tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
-    .tag-badge { font-family: var(--font-code); font-size: 0.8rem; padding: 4px 8px; border-radius: 4px; background: rgba(77, 91, 206, 0.1); color: var(--accent-blue); border: 1px solid var(--accent-blue); }
-    .live-link-box { margin-top: 2rem; padding: 1.5rem; background: rgba(67, 217, 173, 0.05); border: 1px dashed var(--accent-turquoise); border-radius: 8px; text-align: center; }
-</style>
-
 <div class="projects-layout">
     <aside class="sidebar">
         <div class="sidebar-title">
             <i class="fas fa-project-diagram"></i> Explorer
         </div>
         <div class="filter-group">
-            <a href="<?= siteUrl('projects.php') ?>" class="filter-item" style="text-decoration:none; color:var(--text-secondary);">
+            <a href="<?= siteUrl('projects.php') ?>" class="filter-item project-sidebar-link">
                 <i class="fas fa-arrow-left"></i> .. (retour)
             </a>
-            <div class="filter-item" style="color: var(--text-main); background: rgba(255,255,255,0.05);">
-                <i class="fas fa-file-code" style="color: var(--accent-turquoise);"></i> <?= escape($project['title']) ?>.md
+            <div class="filter-item project-sidebar-current">
+                <i class="fas fa-file-code project-sidebar-current-icon"></i> <?= escape($project['title']) ?>.md
             </div>
             <?php if ($project['live_link']): ?>
-                <a href="<?= escape($project['live_link']) ?>" target="_blank" class="filter-item" style="text-decoration:none; color:var(--text-secondary);">
-                    <i class="fas fa-external-link-alt" style="color: var(--accent-turquoise);"></i> visit_live_site()
+                <a href="<?= escape($project['live_link']) ?>" target="_blank" class="filter-item project-sidebar-link">
+                    <i class="fas fa-external-link-alt project-sidebar-current-icon"></i> visit_live_site()
                 </a>
             <?php endif; ?>
         </div>
@@ -34,7 +21,7 @@
     <main class="main-content">
         <div class="file-tab-bar">
             <div class="file-tab active">
-                <i class="fas fa-info-circle" style="color: var(--accent-blue);"></i> <?= escape($project['title']) ?>.md
+                <i class="fas fa-info-circle project-tab-icon"></i> <?= escape($project['title']) ?>.md
                 <a href="<?= siteUrl('projects.php') ?>" class="close-tab">×</a>
             </div>
         </div>
@@ -99,9 +86,9 @@
 
             <?php if ($project['live_link']): ?>
                 <div class="live-link-box">
-                    <h3 style="color: var(--accent-turquoise); margin-bottom: 10px;">Le projet est en ligne ! 🚀</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Vous pouvez tester directement.</p>
-                    <a href="<?= escape($project['live_link']) ?>" target="_blank" class="btn-primary" style="padding: 10px 25px; font-size: 1.1rem;">
+                    <h3 class="live-link-box-title">Le projet est en ligne ! 🚀</h3>
+                    <p class="live-link-box-copy">Vous pouvez tester directement.</p>
+                    <a href="<?= escape($project['live_link']) ?>" target="_blank" class="btn-primary live-link-box-action">
                         <i></i> Accéder au projet
                     </a>
                 </div>

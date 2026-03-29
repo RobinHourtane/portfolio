@@ -11,15 +11,15 @@
     </thead>
     <tbody>
         <?php foreach ($messages as $msg): ?>
-            <tr style="<?= !$msg['is_read'] ? 'background: rgba(255,255,255,0.05);' : '' ?>">
+            <tr class="<?= !$msg['is_read'] ? 'message-row-unread' : '' ?>">
                 <td>
                     <div><?= escape($msg['name']) ?></div>
-                    <small style="color: var(--text-secondary);"><?= escape($msg['email']) ?></small>
-                    <div style="font-size: 0.7rem; color: gray;"><?= date('d/m/Y H:i', strtotime($msg['created_at'])) ?></div>
+                    <small class="message-meta-email"><?= escape($msg['email']) ?></small>
+                    <div class="message-meta-date"><?= date('d/m/Y H:i', strtotime($msg['created_at'])) ?></div>
                 </td>
                 <td><?= escape($msg['subject']) ?></td>
                 <td>
-                    <div style="max-width: 400px; max-height: 100px; overflow-y: auto; white-space: pre-wrap; font-size: 0.9rem; color: var(--text-secondary);">
+                    <div class="message-preview">
                         <?= escape($msg['message']) ?>
                     </div>
                 </td>
@@ -28,7 +28,7 @@
                         <a href="<?= siteUrl('admin/messages.php?read=' . $msg['id']) ?>" class="btn" title="Marquer lu"><i class="fas fa-check"></i></a>
                     <?php endif; ?>
                     <a href="mailto:<?= escape($msg['email']) ?>" class="btn"><i class="fas fa-reply"></i></a>
-                    <a href="<?= siteUrl('admin/messages.php?delete=' . $msg['id']) ?>" class="btn" style="color: var(--accent-rose);" onclick="return confirm('Supprimer ?');"><i class="fas fa-trash"></i></a>
+                    <a href="<?= siteUrl('admin/messages.php?delete=' . $msg['id']) ?>" class="btn btn-icon-danger" onclick="return confirm('Supprimer ?');"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
         <?php endforeach; ?>

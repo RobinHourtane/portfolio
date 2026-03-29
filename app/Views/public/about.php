@@ -44,7 +44,7 @@
                 <div class="folder is-open">
                     <div class="folder-header" onclick="toggleFolder(this)">
                         <i class="fas fa-chevron-down arrow-icon"></i>
-                        <i class="fas fa-folder-open folder-icon" style="color: #E99287;"></i>
+                        <i class="fas fa-folder-open folder-icon u-text-rose"></i>
                         <span>infos_perso</span>
                     </div>
 
@@ -52,12 +52,12 @@
                         <div class="folder is-open">
                             <div class="folder-header" onclick="toggleFolder(this)">
                                 <i class="fas fa-chevron-down arrow-icon"></i>
-                                <i class="fas fa-folder folder-icon" style="color: #E99287;"></i>
+                                <i class="fas fa-folder folder-icon u-text-rose"></i>
                                 <span>bio</span>
                             </div>
                             <div class="folder-children">
                                 <div class="file active" onclick="openFile('biography', this)" data-file-id="biography" data-file-label="biographie.txt" data-image="bio-image">
-                                    <i class="fas fa-file-alt file-icon" style="color: #607B96;"></i>
+                                    <i class="fas fa-file-alt file-icon u-text-secondary"></i>
                                     <span>biographie.txt</span>
                                 </div>
                             </div>
@@ -66,12 +66,12 @@
                         <div class="folder">
                             <div class="folder-header" onclick="toggleFolder(this)">
                                 <i class="fas fa-chevron-down arrow-icon"></i>
-                                <i class="fas fa-folder-open folder-icon" style="color: #43D9AD;"></i>
+                                <i class="fas fa-folder-open folder-icon u-text-turquoise"></i>
                                 <span>interests</span>
                             </div>
                             <div class="folder-children">
                                 <div class="file" onclick="openFile('passions', this)" data-file-id="passions" data-file-label="mes_passions.md" data-image="passions-image">
-                                    <i class="fas fa-file-alt file-icon" style="color: #607B96;"></i>
+                                    <i class="fas fa-file-alt file-icon u-text-secondary"></i>
                                     <span>mes_passions.md</span>
                                 </div>
                             </div>
@@ -80,16 +80,16 @@
                         <div class="folder">
                             <div class="folder-header" onclick="toggleFolder(this)">
                                 <i class="fas fa-chevron-down arrow-icon"></i>
-                                <i class="fas fa-folder-open folder-icon" style="color: #4D5BCE;"></i>
+                                <i class="fas fa-folder-open folder-icon u-text-blue"></i>
                                 <span>Education</span>
                             </div>
                             <div class="folder-children">
                                 <div class="file" onclick="openFile('diplomas', this)" data-file-id="diplomas" data-file-label="mes_diplomes.json" data-image="education-image">
-                                    <i class="fas fa-graduation-cap file-icon" style="color: #607B96;"></i>
+                                    <i class="fas fa-graduation-cap file-icon u-text-secondary"></i>
                                     <span>mes_diplomes.json</span>
                                 </div>
                                 <div class="file" onclick="openFile('cv', this)" data-file-id="cv" data-file-label="mon_cv.pdf" data-image="cv-image">
-                                    <i class="fas fa-file-pdf file-icon" style="color: #607B96;"></i>
+                                    <i class="fas fa-file-pdf file-icon u-text-secondary"></i>
                                     <span>mon_cv.pdf</span>
                                 </div>
                             </div>
@@ -97,19 +97,19 @@
                     </div>
                 </div>
 
-                <div class="folder is-open" style="margin-top: 10px;">
+                <div class="folder is-open folder-spaced">
                     <div class="folder-header" onclick="toggleFolder(this)">
                         <i class="fas fa-chevron-down arrow-icon"></i>
-                        <i class="fas fa-folder folder-icon" style="color: #C98BDF;"></i>
+                        <i class="fas fa-folder folder-icon u-text-purple"></i>
                         <span>contacts</span>
                     </div>
                     <div class="folder-children">
                         <div class="contact-item">
-                            <i class="fas fa-envelope" style="color: #607B96;"></i>
+                            <i class="fas fa-envelope u-text-secondary"></i>
                             <a href="mailto:<?= escape($contactEmail) ?>" class="selectable"><?= escape($contactEmail) ?></a>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-phone" style="color: #607B96;"></i>
+                            <i class="fas fa-phone u-text-secondary"></i>
                             <a href="tel:<?= escape($contactPhone) ?>" class="selectable"><?= escape($contactPhone) ?></a>
                         </div>
                     </div>
