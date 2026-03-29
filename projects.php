@@ -4,16 +4,19 @@ require_once 'includes/functions.php';
 
 $pageTitle = "_projets";
 
-// RÈcupÈration des projets publiÈs
-$stmt = $pdo->query("SELECT * FROM projects WHERE is_published = 1 ORDER BY order_position ASC, created_at DESC");
-$projects = $stmt->fetchAll();
+// R√©cup√©ration des projets publi√©s
+$projects = [];
+if (hasDatabase()) {
+    $stmt = $pdo->query("SELECT * FROM projects WHERE is_published = 1 ORDER BY order_position ASC, created_at DESC");
+    $projects = $stmt->fetchAll();
+}
 
 require_once 'includes/header.php';
 ?>
 
 <style>
     .sidebar-content .file span {
-        text-transform: lowercase; /* GËre parfaitement "DÈvelopper" -> "dÈvelopper" */
+        text-transform: lowercase; /* G√®re parfaitement "D√©velopper" -> "d√©velopper" */
     }
 </style>
 
@@ -60,7 +63,7 @@ require_once 'includes/header.php';
                         </div>
                         <div class="folder-children">
                             <?php 
-                            $tags = ["Comprendre", "Exprimer", "Concevoir", "DÈvelopper", "Entreprendre"];
+                            $tags = ["Comprendre", "Exprimer", "Concevoir", "D√©velopper", "Entreprendre"];
                             foreach($tags as $tag): 
                             ?>
                             <div class="file" data-type="competence" data-value="<?= $tag ?>" onclick="toggleFilter(this)">
@@ -165,7 +168,7 @@ require_once 'includes/header.php';
             <?php endforeach; ?>
             
             <?php if(empty($projects)): ?>
-                <p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">Aucun projet trouvÈ.</p>
+                <p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">Aucun projet trouv√©.</p>
             <?php endif; ?>
         </div>
     </main>

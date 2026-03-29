@@ -1,6 +1,7 @@
 <?php
 require_once '../includes/config.php';
 require_once '../includes/functions.php';
+requireDatabase();
 
 // Si déjà connecté, redirection dashboard
 if (isLoggedIn()) {

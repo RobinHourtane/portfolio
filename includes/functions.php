@@ -15,6 +15,34 @@ function redirect($url) {
 }
 
 /**
+ * Vérifie si la base est disponible
+ */
+function hasDatabase() {
+    global $pdo;
+    return $pdo instanceof PDO;
+}
+
+/**
+ * Force la présence de la base pour les zones qui en dépendent
+ */
+function requireDatabase() {
+    global $databaseError;
+
+    if (hasDatabase()) {
+        return;
+    }
+
+    http_response_code(500);
+    $message = "La base de données n'est pas configurée pour cet environnement.";
+
+    if (!empty($databaseError)) {
+        $message .= " Détail : " . $databaseError;
+    }
+
+    die($message);
+}
+
+/**
  * Vérifie si l'admin est connecté
  */
 function isLoggedIn() {
@@ -25,6 +53,8 @@ function isLoggedIn() {
  * Force la connexion (à utiliser en haut des pages admin)
  */
 function requireLogin() {
+    requireDatabase();
+
     if (!isLoggedIn()) {
         redirect('/admin/login.php');
     }
@@ -52,6 +82,11 @@ function verifyCsrfToken($token) {
  */
 function getSetting($key) {
     global $pdo;
+
+    if (!hasDatabase()) {
+        return null;
+    }
+
     $stmt = $pdo->prepare("SELECT setting_value FROM settings WHERE setting_key = ?");
     $stmt->execute([$key]);
     return $stmt->fetchColumn();

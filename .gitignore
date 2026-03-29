@@ -1,10 +1,15 @@
 # Secrets / config locale
 .env
 **/.env
+includes/config.local.php
 
 # Dumps / bases de données (ne jamais versionner en public)
 database.sql
 *.sql
+!database.sql
+
+# Logs locaux
+/.php-server*.log
 
 # Uploads et médias générés
 uploads/

@@ -2,6 +2,7 @@
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
 
+if (!hasDatabase()) redirect('projects.php');
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) redirect('projects.php');
 $id = $_GET['id'];
 

@@ -7,31 +7,37 @@ $messageSent = false;
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Nettoyage
-    $name = trim($_POST['name']);
-    $email = trim($_POST['email']);
-    $subject = trim($_POST['subject']);
-    $message = trim($_POST['message']);
-
-    // Validation basique
-    if (empty($name) || empty($email) || empty($message)) {
-        $error = "Tous les champs sont requis.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Format d'email invalide.";
+    if (!hasDatabase()) {
+        $error = "Le formulaire n'est pas disponible tant que la base locale n'est pas configurée.";
     } else {
-        // Insertion BDD
-        try {
-            $stmt = $pdo->prepare("INSERT INTO contact_messages (name, email, subject, message, created_at) VALUES (?, ?, ?, ?, NOW())");
-            $stmt->execute([$name, $email, $subject, $message]);
-            
-            // Envoi mail (fonction native PHP mail(), à configurer sur o2switch si besoin)
-            $to = getSetting('email');
-            $headers = "From: " . $email;
-            mail($to, "Nouveau message de $name : $subject", $message, $headers);
+        // Nettoyage
+        $name = trim($_POST['name']);
+        $email = trim($_POST['email']);
+        $subject = trim($_POST['subject']);
+        $message = trim($_POST['message']);
 
-            $messageSent = true;
-        } catch (Exception $e) {
-            $error = "Erreur lors de l'envoi : " . $e->getMessage();
+        // Validation basique
+        if (empty($name) || empty($email) || empty($message)) {
+            $error = "Tous les champs sont requis.";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $error = "Format d'email invalide.";
+        } else {
+            // Insertion BDD
+            try {
+                $stmt = $pdo->prepare("INSERT INTO contact_messages (name, email, subject, message, created_at) VALUES (?, ?, ?, ?, NOW())");
+                $stmt->execute([$name, $email, $subject, $message]);
+                
+                // Envoi mail (fonction native PHP mail(), à configurer sur o2switch si besoin)
+                $to = getSetting('email');
+                if (!empty($to)) {
+                    $headers = "From: " . $email;
+                    mail($to, "Nouveau message de $name : $subject", $message, $headers);
+                }
+
+                $messageSent = true;
+            } catch (Exception $e) {
+                $error = "Erreur lors de l'envoi : " . $e->getMessage();
+            }
         }
     }
 }
