@@ -12,7 +12,7 @@ database.sql
 /.php-server*.log
 
 # Uploads et médias générés
-uploads/
+public/uploads/
 
 # Dépendances / caches
 node_modules/

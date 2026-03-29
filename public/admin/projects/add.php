@@ -1,4 +1,4 @@
 <?php
-require dirname(__DIR__, 2) . '/app/bootstrap.php';
+require dirname(__DIR__, 3) . '/app/bootstrap.php';
 
 (new App\Controllers\Admin\ProjectController())->create();

@@ -7,8 +7,12 @@ if (!defined('APP_PATH')) {
     define('APP_PATH', BASE_PATH . DIRECTORY_SEPARATOR . 'app');
 }
 
+if (!defined('PUBLIC_PATH')) {
+    define('PUBLIC_PATH', BASE_PATH . DIRECTORY_SEPARATOR . 'public');
+}
+
 if (!defined('PROJECT_UPLOADS_PATH')) {
-    define('PROJECT_UPLOADS_PATH', BASE_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'projects');
+    define('PROJECT_UPLOADS_PATH', PUBLIC_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'projects');
 }
 
 $getEnv = static function (string $key): ?string {

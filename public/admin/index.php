@@ -1,4 +1,4 @@
 <?php
-require dirname(__DIR__) . '/app/bootstrap.php';
+require dirname(__DIR__, 2) . '/app/bootstrap.php';
 
 (new App\Controllers\Admin\DashboardController())->index();
