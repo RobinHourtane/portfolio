@@ -122,6 +122,12 @@
         <div class="projects-grid projects-grid-editor">
             <?php foreach ($projects as $project): ?>
                 <div class="project-card" data-category="<?= escape($project['category']) ?>" data-type="<?= escape($project['type']) ?>" data-competences="<?= escape($project['competences']) ?>">
+                    <a
+                        href="<?= siteUrl('project-detail.php?id=' . $project['id']) ?>"
+                        class="project-card-mobile-link"
+                        aria-label="Voir le projet <?= escape($project['title']) ?>"
+                    ></a>
+
                     <div class="project-card-media">
                         <?php if ($project['image_url']): ?>
                             <img src="<?= siteUrl('uploads/projects/' . $project['image_url']) ?>" alt="<?= escape($project['title']) ?>" class="project-thumb">
