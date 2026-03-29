@@ -1,4 +1,16 @@
 <?php
+if (!defined('BASE_PATH')) {
+    define('BASE_PATH', dirname(__DIR__));
+}
+
+if (!defined('APP_PATH')) {
+    define('APP_PATH', BASE_PATH . DIRECTORY_SEPARATOR . 'app');
+}
+
+if (!defined('PROJECT_UPLOADS_PATH')) {
+    define('PROJECT_UPLOADS_PATH', BASE_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'projects');
+}
+
 $getEnv = static function (string $key): ?string {
     $value = getenv($key);
     return $value === false ? null : $value;

@@ -1,8 +1,4 @@
 <?php
-require_once '../includes/config.php';
-require_once '../includes/functions.php';
+require dirname(__DIR__) . '/app/bootstrap.php';
 
-session_unset();
-session_destroy();
-redirect('login.php');
-?>
+(new App\Controllers\Admin\AuthController())->logout();

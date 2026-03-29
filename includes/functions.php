@@ -15,6 +15,27 @@ function redirect($url) {
 }
 
 /**
+ * Construit une URL absolue à partir de l'URL du site
+ */
+function siteUrl($path = '') {
+    $base = rtrim(SITE_URL, '/');
+    $trimmedPath = ltrim((string) $path, '/');
+
+    if ($trimmedPath === '') {
+        return $base . '/';
+    }
+
+    return $base . '/' . $trimmedPath;
+}
+
+/**
+ * Alias dédié aux assets
+ */
+function assetUrl($path) {
+    return siteUrl($path);
+}
+
+/**
  * Vérifie si la base est disponible
  */
 function hasDatabase() {
