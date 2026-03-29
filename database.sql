@@ -84,4 +84,5 @@ INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
 ('github_link', 'https://github.com/'),
 ('email', 'contact@example.com'),
 ('phone', ''),
-('bio', '');
+('bio', ''),
+('about_image', '');

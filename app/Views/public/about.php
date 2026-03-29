@@ -27,7 +27,7 @@
                         <optgroup label="infos_perso / interests">
                             <option value="passions" data-group="infos_perso / interests" data-icon="fas fa-file-alt" data-accent="turquoise">mes_passions.md</option>
                         </optgroup>
-                        <optgroup label="infos_perso / Education">
+                        <optgroup label="infos_perso / education">
                             <option value="diplomas" data-group="infos_perso / Education" data-icon="fas fa-graduation-cap" data-accent="blue">mes_diplomes.json</option>
                             <option value="cv" data-group="infos_perso / Education" data-icon="fas fa-file-pdf" data-accent="rose">mon_cv.pdf</option>
                         </optgroup>
@@ -188,7 +188,7 @@
 
     <section class="visual-column">
         <div class="image-wrapper">
-            <img id="bio-image" src="<?= assetUrl('uploads/image.png') ?>" class="active-image" alt="Bio">
+            <img id="bio-image" src="<?= escape($aboutImageUrl) ?>" class="active-image" alt="Bio">
             <img id="passions-image" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Passions">
             <img id="education-image" src="<?= assetUrl('uploads/diplome.jpg') ?>" alt="Education">
             <img id="cv-image" src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80" alt="CV">

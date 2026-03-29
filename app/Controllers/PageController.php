@@ -35,6 +35,7 @@ class PageController extends Controller
             'activePage' => 'about',
             'footerGithubLink' => $githubLink,
             'aboutBio' => $settings['bio'] ?? "Passionné par le design graphique, le développement web et la communication digitale, je m'appelle Robin Hourtané, étudiant en BUT MMI à l’IUT de Toulon. Curieux, rigoureux et créatif, j'aime concevoir des expériences web soignées, à la fois visuelles et fonctionnelles. Mes compétences vont de l’UI/UX au développement PHP en passant par la gestion de projets.",
+            'aboutImageUrl' => \aboutImageUrl($settings['about_image'] ?? null),
             'contactEmail' => $settings['email'] ?? 'robin.hourtane@gmail.com',
             'contactPhone' => $settings['phone'] ?? '+33610105558',
         ]);

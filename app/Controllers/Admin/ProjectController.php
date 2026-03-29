@@ -202,7 +202,7 @@ class ProjectController extends Controller
             return null;
         }
 
-        $image = \uploadImage($file, PROJECT_UPLOADS_PATH);
+        $image = \uploadImage($file, PROJECT_UPLOADS_PATH, 'proj_');
         return $image ?: null;
     }
 
@@ -227,7 +227,7 @@ class ProjectController extends Controller
                 'size' => $files['size'][$i],
             ];
 
-            $galleryImage = \uploadImage($file, PROJECT_UPLOADS_PATH);
+            $galleryImage = \uploadImage($file, PROJECT_UPLOADS_PATH, 'proj_');
             if ($galleryImage) {
                 $this->images->create($projectId, $galleryImage);
             }

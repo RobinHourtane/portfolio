@@ -124,6 +124,39 @@
     color: var(--text-main);
 }
 .settings-textarea-code { font-family: var(--font-code); }
+.settings-image-preview {
+    width: min(220px, 100%);
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--border);
+    background: var(--bg-darker);
+}
+
+.settings-image-preview-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.settings-current-file,
+.settings-help {
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.settings-current-file {
+    margin-bottom: 0.5rem;
+    font-family: var(--font-code);
+}
+
+.settings-inline-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    color: var(--text-secondary);
+}
 
 .project-form { max-width: 800px; }
 .form-grid-two {

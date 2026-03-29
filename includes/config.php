@@ -15,6 +15,10 @@ if (!defined('PROJECT_UPLOADS_PATH')) {
     define('PROJECT_UPLOADS_PATH', PUBLIC_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'projects');
 }
 
+if (!defined('SETTINGS_UPLOADS_PATH')) {
+    define('SETTINGS_UPLOADS_PATH', PUBLIC_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'settings');
+}
+
 $getEnv = static function (string $key): ?string {
     $value = getenv($key);
     return $value === false ? null : $value;

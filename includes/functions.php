@@ -36,6 +36,32 @@ function assetUrl($path) {
 }
 
 /**
+ * URL d'un upload lié aux paramètres du site
+ */
+function settingsUploadUrl($filename) {
+    $safeFilename = basename(trim((string) $filename));
+
+    if ($safeFilename === '') {
+        return assetUrl('uploads/image.png');
+    }
+
+    return siteUrl('uploads/settings/' . rawurlencode($safeFilename));
+}
+
+/**
+ * URL de l'image de biographie avec fallback sur l'image historique
+ */
+function aboutImageUrl($filename = null) {
+    $safeFilename = basename(trim((string) $filename));
+
+    if ($safeFilename !== '' && is_file(SETTINGS_UPLOADS_PATH . DIRECTORY_SEPARATOR . $safeFilename)) {
+        return settingsUploadUrl($safeFilename);
+    }
+
+    return assetUrl('uploads/image.png');
+}
+
+/**
  * Vérifie si la base est disponible
  */
 function hasDatabase() {
@@ -101,7 +127,7 @@ function verifyCsrfToken($token) {
 /**
  * Upload d'image sécurisé
  */
-function uploadImage($file, $destination) {
+function uploadImage($file, $destination, $prefix = 'upload_') {
     $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
     $maxSize = 5 * 1024 * 1024; // 5MB
 
@@ -120,8 +146,8 @@ function uploadImage($file, $destination) {
     if (!in_array($mime, $allowedMimes)) return false;
 
     // Renommage
-    $newName = uniqid('proj_', true) . '.' . $ext;
-    $target = rtrim($destination, '/') . '/' . $newName;
+    $newName = uniqid((string) $prefix, true) . '.' . $ext;
+    $target = rtrim((string) $destination, '/\\') . DIRECTORY_SEPARATOR . $newName;
 
     if (move_uploaded_file($file['tmp_name'], $target)) {
         return $newName;
@@ -133,8 +159,14 @@ function uploadImage($file, $destination) {
  * Supprime une image du serveur
  */
 function deleteImage($filename, $path) {
-    if ($filename && file_exists($path . '/' . $filename)) {
-        unlink($path . '/' . $filename);
+    $safeFilename = basename(trim((string) $filename));
+    if ($safeFilename === '') {
+        return;
+    }
+
+    $target = rtrim((string) $path, '/\\') . DIRECTORY_SEPARATOR . $safeFilename;
+    if (is_file($target)) {
+        unlink($target);
     }
 }
 ?>
