@@ -5,6 +5,41 @@
                 <span>EXPLORATEUR</span>
             </div>
 
+            <div class="mobile-sidebar-panel">
+                <label class="mobile-sidebar-label" for="about-mobile-file-select">navigation_mobile</label>
+                <div class="mobile-sidebar-select-shell" data-mobile-select-shell data-accent="rose">
+                    <span class="mobile-sidebar-select-accent" aria-hidden="true"></span>
+                    <span class="mobile-sidebar-select-icon" data-mobile-select-icon aria-hidden="true">
+                        <i class="fas fa-file-alt"></i>
+                    </span>
+                    <span class="mobile-sidebar-select-meta">
+                        <span class="mobile-sidebar-select-group" data-mobile-select-group>infos_perso / bio</span>
+                        <span class="mobile-sidebar-select-value" data-mobile-select-value>biographie.txt</span>
+                    </span>
+                    <span class="mobile-sidebar-select-caret" aria-hidden="true">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+
+                    <select id="about-mobile-file-select" class="mobile-sidebar-select" data-mobile-about-select>
+                        <optgroup label="infos_perso / bio">
+                            <option value="biography" data-group="infos_perso / bio" data-icon="fas fa-file-alt" data-accent="rose">biographie.txt</option>
+                        </optgroup>
+                        <optgroup label="infos_perso / interests">
+                            <option value="passions" data-group="infos_perso / interests" data-icon="fas fa-file-alt" data-accent="turquoise">mes_passions.md</option>
+                        </optgroup>
+                        <optgroup label="infos_perso / Education">
+                            <option value="diplomas" data-group="infos_perso / Education" data-icon="fas fa-graduation-cap" data-accent="blue">mes_diplomes.json</option>
+                            <option value="cv" data-group="infos_perso / Education" data-icon="fas fa-file-pdf" data-accent="rose">mon_cv.pdf</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="mobile-sidebar-links">
+                    <a href="mailto:<?= escape($contactEmail) ?>" class="mobile-sidebar-link">mail()</a>
+                    <a href="tel:<?= escape($contactPhone) ?>" class="mobile-sidebar-link">call()</a>
+                </div>
+            </div>
+
             <div class="sidebar-content">
                 <div class="folder is-open">
                     <div class="folder-header" onclick="toggleFolder(this)">
@@ -21,7 +56,7 @@
                                 <span>bio</span>
                             </div>
                             <div class="folder-children">
-                                <div class="file active" onclick="openFile('biography', this)" data-image="bio-image">
+                                <div class="file active" onclick="openFile('biography', this)" data-file-id="biography" data-file-label="biographie.txt" data-image="bio-image">
                                     <i class="fas fa-file-alt file-icon" style="color: #607B96;"></i>
                                     <span>biographie.txt</span>
                                 </div>
@@ -35,7 +70,7 @@
                                 <span>interests</span>
                             </div>
                             <div class="folder-children">
-                                <div class="file" onclick="openFile('passions', this)" data-image="passions-image">
+                                <div class="file" onclick="openFile('passions', this)" data-file-id="passions" data-file-label="mes_passions.md" data-image="passions-image">
                                     <i class="fas fa-file-alt file-icon" style="color: #607B96;"></i>
                                     <span>mes_passions.md</span>
                                 </div>
@@ -49,11 +84,11 @@
                                 <span>Education</span>
                             </div>
                             <div class="folder-children">
-                                <div class="file" onclick="openFile('diplomas', this)" data-image="education-image">
+                                <div class="file" onclick="openFile('diplomas', this)" data-file-id="diplomas" data-file-label="mes_diplomes.json" data-image="education-image">
                                     <i class="fas fa-graduation-cap file-icon" style="color: #607B96;"></i>
                                     <span>mes_diplomes.json</span>
                                 </div>
-                                <div class="file" onclick="openFile('cv', this)" data-image="cv-image">
+                                <div class="file" onclick="openFile('cv', this)" data-file-id="cv" data-file-label="mon_cv.pdf" data-image="cv-image">
                                     <i class="fas fa-file-pdf file-icon" style="color: #607B96;"></i>
                                     <span>mon_cv.pdf</span>
                                 </div>
@@ -163,15 +198,71 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    const aboutFiles = Array.from(document.querySelectorAll('.file[data-file-id]'));
+    const aboutMobileSelect = document.querySelector('[data-mobile-about-select]');
+    const tabLabel = document.querySelector('#active-tab-label span');
+    const contentBlocks = document.querySelectorAll('.content-block');
+    const galleryImages = document.querySelectorAll('.image-wrapper img');
+
+    const setupMobileSelectUi = (select) => {
+        if (!select) {
+            return { update: () => {} };
+        }
+
+        const shell = select.closest('[data-mobile-select-shell]');
+        const groupLabel = shell?.querySelector('[data-mobile-select-group]');
+        const valueLabel = shell?.querySelector('[data-mobile-select-value]');
+        const icon = shell?.querySelector('[data-mobile-select-icon] i');
+
+        const update = () => {
+            const selectedOption = select.options[select.selectedIndex];
+            if (!selectedOption || !shell) {
+                return;
+            }
+
+            if (groupLabel) {
+                groupLabel.textContent = selectedOption.dataset.group || selectedOption.parentElement?.label || 'navigation';
+            }
+
+            if (valueLabel) {
+                valueLabel.textContent = selectedOption.textContent.trim();
+            }
+
+            if (icon) {
+                icon.className = selectedOption.dataset.icon || 'fas fa-file-alt';
+            }
+
+            shell.dataset.accent = selectedOption.dataset.accent || 'blue';
+        };
+
+        update();
+
+        return { update };
+    };
+
+    const aboutMobileSelectUi = setupMobileSelectUi(aboutMobileSelect);
+
     window.toggleFolder = function(headerElement) {
         const folder = headerElement.parentElement;
         folder.classList.toggle('is-open');
     };
 
-    window.openFile = function(fileId, element) {
-        document.querySelectorAll('.file').forEach(el => el.classList.remove('active'));
-        element.classList.add('active');
-        document.querySelectorAll('.content-block').forEach(el => el.classList.remove('active'));
+    const syncAboutMobileSelect = (fileId) => {
+        if (aboutMobileSelect) {
+            aboutMobileSelect.value = fileId;
+            aboutMobileSelectUi.update();
+        }
+    };
+
+    window.openFile = function(fileId, element = null) {
+        const activeFile = element || aboutFiles.find((file) => file.dataset.fileId === fileId);
+        if (!activeFile) {
+            return;
+        }
+
+        aboutFiles.forEach((file) => file.classList.remove('active'));
+        activeFile.classList.add('active');
+        contentBlocks.forEach((block) => block.classList.remove('active'));
 
         const contentId = 'content-' + fileId;
         const contentEl = document.getElementById(contentId);
@@ -179,14 +270,12 @@ document.addEventListener('DOMContentLoaded', () => {
             contentEl.classList.add('active');
         }
 
-        const fileName = element.querySelector('span').innerText;
-        const tabLabel = document.querySelector('#active-tab-label span');
         if (tabLabel) {
-            tabLabel.innerText = fileName;
+            tabLabel.innerText = activeFile.dataset.fileLabel || activeFile.querySelector('span').innerText;
         }
 
-        const imageId = element.getAttribute('data-image');
-        document.querySelectorAll('.image-wrapper img').forEach(img => {
+        const imageId = activeFile.getAttribute('data-image');
+        galleryImages.forEach(img => {
             img.classList.remove('active-image');
             setTimeout(() => {
                 if (!img.classList.contains('active-image')) {
@@ -201,6 +290,19 @@ document.addEventListener('DOMContentLoaded', () => {
             void newImage.offsetWidth;
             newImage.classList.add('active-image');
         }
+
+        syncAboutMobileSelect(fileId);
     };
+
+    if (aboutMobileSelect) {
+        aboutMobileSelect.addEventListener('change', (event) => {
+            window.openFile(event.target.value);
+        });
+    }
+
+    const defaultFile = aboutFiles.find((file) => file.classList.contains('active'));
+    if (defaultFile) {
+        syncAboutMobileSelect(defaultFile.dataset.fileId);
+    }
 });
 </script>

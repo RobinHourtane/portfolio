@@ -10,6 +10,44 @@
             <span>EXPLORATEUR : PROJETS</span>
         </div>
 
+        <div class="mobile-sidebar-panel">
+            <label class="mobile-sidebar-label" for="projects-mobile-filter-select">navigation_mobile</label>
+            <div class="mobile-sidebar-select-shell" data-mobile-select-shell data-accent="blue">
+                <span class="mobile-sidebar-select-accent" aria-hidden="true"></span>
+                <span class="mobile-sidebar-select-icon" data-mobile-select-icon aria-hidden="true">
+                    <i class="fas fa-layer-group"></i>
+                </span>
+                <span class="mobile-sidebar-select-meta">
+                    <span class="mobile-sidebar-select-group" data-mobile-select-group>filtres</span>
+                    <span class="mobile-sidebar-select-value" data-mobile-select-value>tous_les_projets</span>
+                </span>
+                <span class="mobile-sidebar-select-caret" aria-hidden="true">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+
+                <select id="projects-mobile-filter-select" class="mobile-sidebar-select" data-mobile-projects-select>
+                    <option value="__all__" data-group="filtres" data-icon="fas fa-layer-group" data-accent="blue">tous_les_projets</option>
+                    <option value="__multiple__" data-group="filtres" data-icon="fas fa-sliders-h" data-accent="purple">selection_multiple</option>
+                    <optgroup label="filtres / par_categorie">
+                        <option value="category-pro" data-type="category" data-value="pro" data-group="filtres / par_categorie" data-icon="fas fa-briefcase" data-accent="turquoise">professionnel</option>
+                        <option value="category-university" data-type="category" data-value="university" data-group="filtres / par_categorie" data-icon="fas fa-graduation-cap" data-accent="blue">universitaire</option>
+                    </optgroup>
+                    <optgroup label="filtres / par_competence">
+                        <?php foreach ($projectTags as $tag): ?>
+                            <option value="competence-<?= escape(md5($tag)) ?>" data-type="competence" data-value="<?= escape($tag) ?>" data-group="filtres / par_competence" data-icon="fas fa-tag" data-accent="rose">
+                                <?= escape($tag) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </optgroup>
+                    <optgroup label="filtres / par_stack">
+                        <option value="type-web-dev" data-type="type" data-value="web_dev" data-group="filtres / par_stack" data-icon="fab fa-js" data-accent="rose">web_dev.ts</option>
+                        <option value="type-communication" data-type="type" data-value="communication" data-group="filtres / par_stack" data-icon="fas fa-bullhorn" data-accent="purple">com.md</option>
+                        <option value="type-digital-creation" data-type="type" data-value="digital_creation" data-group="filtres / par_stack" data-icon="fas fa-paint-brush" data-accent="turquoise">design.css</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
         <div class="sidebar-content">
             <div class="folder">
                 <div class="folder-header" onclick="toggleFolder(this)">
@@ -145,6 +183,47 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    const projectFilterItems = Array.from(document.querySelectorAll('.file[data-type][data-value]'));
+    const mobileProjectsSelect = document.querySelector('[data-mobile-projects-select]');
+
+    const setupMobileSelectUi = (select) => {
+        if (!select) {
+            return { update: () => {} };
+        }
+
+        const shell = select.closest('[data-mobile-select-shell]');
+        const groupLabel = shell?.querySelector('[data-mobile-select-group]');
+        const valueLabel = shell?.querySelector('[data-mobile-select-value]');
+        const icon = shell?.querySelector('[data-mobile-select-icon] i');
+
+        const update = () => {
+            const selectedOption = select.options[select.selectedIndex];
+            if (!selectedOption || !shell) {
+                return;
+            }
+
+            if (groupLabel) {
+                groupLabel.textContent = selectedOption.dataset.group || selectedOption.parentElement?.label || 'navigation';
+            }
+
+            if (valueLabel) {
+                valueLabel.textContent = selectedOption.textContent.trim();
+            }
+
+            if (icon) {
+                icon.className = selectedOption.dataset.icon || 'fas fa-layer-group';
+            }
+
+            shell.dataset.accent = selectedOption.dataset.accent || 'blue';
+        };
+
+        update();
+
+        return { update };
+    };
+
+    const projectsMobileSelectUi = setupMobileSelectUi(mobileProjectsSelect);
+
     window.toggleFolder = function(headerElement) {
         const folder = headerElement.parentElement;
         folder.classList.toggle('is-open');
@@ -155,10 +234,41 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilters();
     };
 
+    function syncProjectsMobileSelect() {
+        if (!mobileProjectsSelect) {
+            return;
+        }
+
+        const activeItems = projectFilterItems.filter((item) => item.classList.contains('active'));
+        if (activeItems.length === 0) {
+            mobileProjectsSelect.value = '__all__';
+            projectsMobileSelectUi.update();
+            return;
+        }
+
+        if (activeItems.length === 1) {
+            const matchingOption = Array.from(mobileProjectsSelect.options).find((option) =>
+                option.dataset.type === activeItems[0].dataset.type &&
+                option.dataset.value === activeItems[0].dataset.value
+            );
+
+            if (matchingOption) {
+                mobileProjectsSelect.value = matchingOption.value;
+                projectsMobileSelectUi.update();
+                return;
+            }
+        }
+
+        mobileProjectsSelect.value = '__multiple__';
+        projectsMobileSelectUi.update();
+    }
+
     function applyFilters() {
         const activeFilters = { category: [], type: [], competence: [] };
 
-        document.querySelectorAll('.file.active').forEach(el => {
+        projectFilterItems
+            .filter((item) => item.classList.contains('active'))
+            .forEach((el) => {
             const type = el.dataset.type;
             const val = el.dataset.value;
             if (type === 'category') activeFilters.category.push(val);
@@ -186,6 +296,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.opacity = '0';
                 setTimeout(() => card.style.display = 'none', 300);
             }
+        });
+
+        syncProjectsMobileSelect();
+    }
+
+    if (mobileProjectsSelect) {
+        mobileProjectsSelect.addEventListener('change', (event) => {
+            const selectedOption = event.target.options[event.target.selectedIndex];
+
+            if (selectedOption.value === '__multiple__') {
+                syncProjectsMobileSelect();
+                return;
+            }
+
+            projectFilterItems.forEach((item) => item.classList.remove('active'));
+
+            if (selectedOption.dataset.type && selectedOption.dataset.value) {
+                const targetItem = projectFilterItems.find((item) =>
+                    item.dataset.type === selectedOption.dataset.type &&
+                    item.dataset.value === selectedOption.dataset.value
+                );
+
+                if (targetItem) {
+                    targetItem.classList.add('active');
+                }
+            }
+
+            applyFilters();
         });
     }
 
