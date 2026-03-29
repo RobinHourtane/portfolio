@@ -2,7 +2,7 @@
 Options -Indexes
 
 # Empêcher l'accès direct aux fichiers include
-<FilesMatch "^(config|functions|header|footer)\.php$">
+<FilesMatch "^(config|functions)\.php$">
     Order allow,deny
     Deny from all
 </FilesMatch>

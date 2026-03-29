@@ -99,21 +99,6 @@ function verifyCsrfToken($token) {
 }
 
 /**
- * Récupère un paramètre depuis la table settings
- */
-function getSetting($key) {
-    global $pdo;
-
-    if (!hasDatabase()) {
-        return null;
-    }
-
-    $stmt = $pdo->prepare("SELECT setting_value FROM settings WHERE setting_key = ?");
-    $stmt->execute([$key]);
-    return $stmt->fetchColumn();
-}
-
-/**
  * Upload d'image sécurisé
  */
 function uploadImage($file, $destination) {
