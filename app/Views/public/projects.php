@@ -159,9 +159,9 @@
                             <?= substr(escape($project['description']), 0, 100) ?>...
                         </div>
 
-                        <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                        <div class="project-card-actions" style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
                             <a href="<?= siteUrl('project-detail.php?id=' . $project['id']) ?>" class="btn">Voir_projet</a>
-                            <div style="display:flex; gap:10px; align-items:center;">
+                            <div class="project-card-actions-icons" style="display:flex; gap:10px; align-items:center;">
                                 <?php if ($project['live_link']): ?>
                                     <a href="<?= escape($project['live_link']) ?>" target="_blank" title="Live" style="color: var(--text-secondary);">
                                         <i class="fas fa-external-link-alt"></i>
