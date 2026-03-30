@@ -1,0 +1,199 @@
+[Mon Mar 30 12:52:37 2026] PHP 8.5.1 Development Server (http://127.0.0.1:8080) started
+[Mon Mar 30 12:52:39 2026] 127.0.0.1:61677 Accepted
+[Mon Mar 30 12:52:39 2026] 127.0.0.1:61677 [200]: GET /
+[Mon Mar 30 12:52:39 2026] 127.0.0.1:61677 Closing
+[Mon Mar 30 12:53:00 2026] 127.0.0.1:54394 Accepted
+[Mon Mar 30 12:53:00 2026] 127.0.0.1:54394 [200]: GET /
+[Mon Mar 30 12:53:00 2026] 127.0.0.1:54394 Closing
+[Mon Mar 30 12:55:07 2026] 127.0.0.1:50954 Accepted
+[Mon Mar 30 12:55:07 2026] 127.0.0.1:50954 [200]: GET /
+[Mon Mar 30 12:55:07 2026] 127.0.0.1:50954 Closing
+[Mon Mar 30 12:55:07 2026] 127.0.0.1:54656 Accepted
+[Mon Mar 30 12:55:08 2026] 127.0.0.1:54656 [200]: GET /assets/css/style.css
+[Mon Mar 30 12:55:08 2026] 127.0.0.1:52217 Accepted
+[Mon Mar 30 12:55:08 2026] 127.0.0.1:54656 Closing
+[Mon Mar 30 12:55:08 2026] 127.0.0.1:52217 [200]: GET /assets/js/main.js
+[Mon Mar 30 12:55:08 2026] 127.0.0.1:52217 Closing
+[Mon Mar 30 12:55:08 2026] 127.0.0.1:53441 Accepted
+[Mon Mar 30 12:55:08 2026] 127.0.0.1:53441 [200]: GET /favicon.ico
+[Mon Mar 30 12:55:08 2026] 127.0.0.1:53441 Closing
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:62059 Accepted
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:62059 [200]: GET /about.php
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:62059 Closing
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:56115 Accepted
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:56115 [200]: GET /assets/css/style.css
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:56115 Closing
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:53216 Accepted
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:62360 Accepted
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:63732 Accepted
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:53216 [200]: GET /uploads/image.png
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:62360 [200]: GET /uploads/diplome.jpg
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:63732 [200]: GET /assets/js/main.js
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:62360 Closing
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:63732 Closing
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:53216 Closing
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:49395 Accepted
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:49395 [200]: GET /favicon.ico
+[Mon Mar 30 12:55:09 2026] 127.0.0.1:49395 Closing
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:57967 Accepted
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:57967 [200]: GET /index.php
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:57967 Closing
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:54232 Accepted
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:54232 [200]: GET /assets/css/style.css
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:54232 Closing
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:53650 Accepted
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:53650 [200]: GET /assets/js/main.js
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:53650 Closing
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:64885 Accepted
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:64885 [200]: GET /favicon.ico
+[Mon Mar 30 12:55:10 2026] 127.0.0.1:64885 Closing
+[Mon Mar 30 12:55:12 2026] 127.0.0.1:58629 Accepted
+[Mon Mar 30 12:55:12 2026] 127.0.0.1:58629 [200]: GET /assets/css/style.css
+[Mon Mar 30 12:55:12 2026] 127.0.0.1:58629 Closing
+[Mon Mar 30 12:55:12 2026] 127.0.0.1:54778 Accepted
+[Mon Mar 30 12:55:12 2026] 127.0.0.1:54778 [404]: GET /.well-known/appspecific/com.chrome.devtools.json - No such file or directory
+[Mon Mar 30 12:55:12 2026] 127.0.0.1:54778 Closing
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:64858 Accepted
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:64858 [200]: GET /about.php
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:64858 Closing
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:63620 Accepted
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:63620 [404]: GET /.well-known/appspecific/com.chrome.devtools.json - No such file or directory
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:63620 Closing
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:64391 Accepted
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:64391 [200]: GET /assets/css/style.css
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:64391 Closing
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:62201 Accepted
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:62201 [200]: GET /uploads/image.png
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:59304 Accepted
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:53191 Accepted
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:59304 [200]: GET /uploads/diplome.jpg
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:53191 [200]: GET /assets/js/main.js
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:59304 Closing
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:62201 Closing
+[Mon Mar 30 12:55:25 2026] 127.0.0.1:53191 Closing
+[Mon Mar 30 12:55:26 2026] 127.0.0.1:58306 Accepted
+[Mon Mar 30 12:55:26 2026] 127.0.0.1:58306 [200]: GET /favicon.ico
+[Mon Mar 30 12:55:26 2026] 127.0.0.1:58306 Closing
+[Mon Mar 30 12:55:47 2026] 127.0.0.1:56092 Accepted
+[Mon Mar 30 12:55:47 2026] 127.0.0.1:56092 [200]: GET /assets/css/style.css
+[Mon Mar 30 12:55:47 2026] 127.0.0.1:56092 Closing
+[Mon Mar 30 12:55:47 2026] 127.0.0.1:57247 Accepted
+[Mon Mar 30 12:55:47 2026] 127.0.0.1:57247 [404]: GET /.well-known/appspecific/com.chrome.devtools.json - No such file or directory
+[Mon Mar 30 12:55:47 2026] 127.0.0.1:57247 Closing
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:60724 Accepted
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:60724 [200]: GET /projects.php
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:60724 Closing
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:61750 Accepted
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:61750 [404]: GET /.well-known/appspecific/com.chrome.devtools.json - No such file or directory
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:61750 Closing
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:53638 Accepted
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:63660 Accepted
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:54711 Accepted
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:53638 [200]: GET /assets/css/style.css
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:53638 Closing
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:63781 Accepted
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:63660 [200]: GET /uploads/projects/proj_6988f84ce6ad03.20876827.png
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:54711 [200]: GET /uploads/projects/proj_6988f3fb7c48f2.56709497.png
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:63781 [200]: GET /uploads/projects/proj_6988f49d460716.35740603.png
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:63583 Accepted
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:63660 Closing
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:54711 Closing
+[Mon Mar 30 12:56:43 2026] 127.0.0.1:63781 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:57173 Accepted
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:63583 [200]: GET /uploads/projects/proj_6988f556d2e543.86422776.png
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:57173 [200]: GET /uploads/projects/proj_6988f59ab12579.72191087.png
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:61668 Accepted
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:61668 [200]: GET /assets/js/main.js
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:63583 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:61668 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:59757 Accepted
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:59563 Accepted
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:49669 Accepted
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:59757 [200]: GET /uploads/projects/proj_6988f5c7caec92.40513924.jpg
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:59563 [200]: GET /uploads/projects/proj_6988f5f9c466a0.17441073.png
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:49669 [200]: GET /uploads/projects/proj_6988f65c23f6a7.43033108.png
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:57173 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:59563 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:57323 Accepted
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:59757 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:49669 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:64407 Accepted
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:57911 Accepted
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:57323 [200]: GET /uploads/projects/proj_6988f68f13c5a8.55461871.png
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:64407 [200]: GET /uploads/projects/proj_6988f6ba134f81.61784952.png
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:57911 [200]: GET /uploads/projects/proj_6988f34c19c084.28814687.png
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:57911 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:64407 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:57323 Closing
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:50516 Accepted
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:50516 [200]: GET /favicon.ico
+[Mon Mar 30 12:56:44 2026] 127.0.0.1:50516 Closing
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:65032 Accepted
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:65032 [200]: GET /project-detail.php?id=16
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:65032 Closing
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:54945 Accepted
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:54945 [404]: GET /.well-known/appspecific/com.chrome.devtools.json - No such file or directory
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:54945 Closing
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:52768 Accepted
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:60195 Accepted
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:64507 Accepted
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:52768 [200]: GET /assets/css/style.css
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:60195 [200]: GET /uploads/projects/proj_6988f3fb7c48f2.56709497.png
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:64507 [200]: GET /assets/js/main.js
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:52768 Closing
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:60195 Closing
+[Mon Mar 30 12:56:50 2026] 127.0.0.1:64507 Closing
+[Mon Mar 30 12:56:51 2026] 127.0.0.1:55801 Accepted
+[Mon Mar 30 12:56:51 2026] 127.0.0.1:55801 [200]: GET /favicon.ico
+[Mon Mar 30 12:56:51 2026] 127.0.0.1:55801 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:54877 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:54877 [200]: GET /projects.php
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:54877 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:58815 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:58815 [404]: GET /.well-known/appspecific/com.chrome.devtools.json - No such file or directory
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:58815 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:53167 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:53167 [200]: GET /assets/css/style.css
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:53167 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:58722 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:58722 [200]: GET /uploads/projects/proj_6988f84ce6ad03.20876827.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:58722 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:60523 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:60523 [200]: GET /uploads/projects/proj_6988f3fb7c48f2.56709497.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:60523 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:60661 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:60661 [200]: GET /uploads/projects/proj_6988f49d460716.35740603.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:60661 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:56668 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:55260 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:53087 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:50461 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:50345 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:56668 [200]: GET /uploads/projects/proj_6988f556d2e543.86422776.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:55260 [200]: GET /uploads/projects/proj_6988f59ab12579.72191087.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:53087 [200]: GET /assets/js/main.js
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:50461 [200]: GET /uploads/projects/proj_6988f5c7caec92.40513924.jpg
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:50345 [200]: GET /uploads/projects/proj_6988f5f9c466a0.17441073.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:53087 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:50345 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:56668 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:50461 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:50499 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:55260 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:56363 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:51584 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:57327 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:50499 [200]: GET /uploads/projects/proj_6988f65c23f6a7.43033108.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:56363 [200]: GET /uploads/projects/proj_6988f68f13c5a8.55461871.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:51584 [200]: GET /uploads/projects/proj_6988f6ba134f81.61784952.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:57327 [200]: GET /uploads/projects/proj_6988f34c19c084.28814687.png
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:57327 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:56363 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:50499 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:51584 Closing
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:52978 Accepted
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:52978 [200]: GET /favicon.ico
+[Mon Mar 30 12:56:54 2026] 127.0.0.1:52978 Closing
+[Mon Mar 30 14:00:12 2026] 127.0.0.1:62399 Accepted
+[Mon Mar 30 14:00:12 2026] 127.0.0.1:62399 [200]: GET /
+[Mon Mar 30 14:00:12 2026] 127.0.0.1:62399 Closing
