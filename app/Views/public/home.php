@@ -20,7 +20,27 @@
                 </div>
             </div>
 
-            <div class="hero-visual"></div>
+            <div class="hero-visual">
+                <div class="hero-scratch-card">
+                    <div class="hero-scratch-top" aria-hidden="true">
+                        <div class="hero-scratch-dots">
+                            <span class="hero-scratch-dot hero-scratch-dot-rose"></span>
+                            <span class="hero-scratch-dot hero-scratch-dot-blue"></span>
+                            <span class="hero-scratch-dot hero-scratch-dot-turquoise"></span>
+                        </div>
+                    </div>
+
+                    <div class="hero-scratch-frame">
+                        <iframe
+                            class="hero-scratch-embed"
+                            src="<?= assetUrl('grattage/index.php') ?>"
+                            title="Portrait interactif à gratter de Robin Hourtané"
+                        ></iframe>
+                    </div>
+
+                    <p class="hero-scratch-note">Gratte la silhouette pour révéler ma photo.</p>
+                </div>
+            </div>
         </div>
     </div>
 </main>
