@@ -138,6 +138,11 @@
     object-fit: cover;
 }
 
+.settings-image-preview-scratch .settings-image-preview-image {
+    background: #020b14;
+    object-fit: contain;
+}
+
 .settings-current-file,
 .settings-help {
     margin-top: 0.5rem;

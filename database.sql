@@ -85,4 +85,5 @@ INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
 ('email', 'contact@example.com'),
 ('phone', ''),
 ('bio', ''),
-('about_image', '');
+('about_image', ''),
+('scratch_image', '');

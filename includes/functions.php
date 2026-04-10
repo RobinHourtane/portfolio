@@ -49,16 +49,59 @@ function settingsUploadUrl($filename) {
 }
 
 /**
+ * Chemin absolu d'une image uploadée dans les paramètres
+ */
+function settingsUploadPath($filename) {
+    $safeFilename = basename(trim((string) $filename));
+
+    if ($safeFilename === '') {
+        return null;
+    }
+
+    $path = SETTINGS_UPLOADS_PATH . DIRECTORY_SEPARATOR . $safeFilename;
+
+    return is_file($path) ? $path : null;
+}
+
+/**
  * URL de l'image de biographie avec fallback sur l'image historique
  */
 function aboutImageUrl($filename = null) {
-    $safeFilename = basename(trim((string) $filename));
+    $path = settingsUploadPath($filename);
 
-    if ($safeFilename !== '' && is_file(SETTINGS_UPLOADS_PATH . DIRECTORY_SEPARATOR . $safeFilename)) {
-        return settingsUploadUrl($safeFilename);
+    if ($path !== null) {
+        return settingsUploadUrl((string) $filename);
     }
 
     return assetUrl('uploads/image.png');
+}
+
+/**
+ * URL de l'image a gratter avec fallback sur l'image historique du module
+ */
+function scratchImageUrl($filename = null) {
+    $path = settingsUploadPath($filename);
+
+    if ($path !== null) {
+        return settingsUploadUrl((string) $filename);
+    }
+
+    return siteUrl('grattage/photo.php');
+}
+
+/**
+ * Chemin source de l'image a gratter avec fallback sur l'image historique du module
+ */
+function scratchImagePath($filename = null) {
+    $path = settingsUploadPath($filename);
+
+    if ($path !== null) {
+        return $path;
+    }
+
+    $fallback = BASE_PATH . DIRECTORY_SEPARATOR . 'Grattage' . DIRECTORY_SEPARATOR . 'photo_Robin.png';
+
+    return is_file($fallback) ? $fallback : null;
 }
 
 /**

@@ -8,6 +8,7 @@ use App\Models\SettingModel;
 class SettingsController extends Controller
 {
     private const ABOUT_IMAGE_SETTING_KEY = 'about_image';
+    private const SCRATCH_IMAGE_SETTING_KEY = 'scratch_image';
 
     private SettingModel $settings;
     private AdminModel $admins;
@@ -44,6 +45,16 @@ class SettingsController extends Controller
                 $this->redirectTo('admin/settings.php?error=' . $uploadError);
             }
 
+            $uploadError = $this->handleScratchImageUpload(
+                $settingsToSave,
+                $_FILES['scratch_image'] ?? null,
+                isset($_POST['remove_scratch_image'])
+            );
+
+            if ($uploadError !== null) {
+                $this->redirectTo('admin/settings.php?error=' . $uploadError);
+            }
+
             $this->settings->saveMany($settingsToSave);
 
             $newPassword = (string) ($_POST['new_password'] ?? '');
@@ -61,6 +72,7 @@ class SettingsController extends Controller
             'adminSection' => 'settings',
             'currentSettings' => $currentSettings,
             'currentAboutImageUrl' => \aboutImageUrl($currentSettings[self::ABOUT_IMAGE_SETTING_KEY] ?? null),
+            'currentScratchImageUrl' => \scratchImageUrl($currentSettings[self::SCRATCH_IMAGE_SETTING_KEY] ?? null),
             'errorMessage' => $this->errorMessage((string) ($_GET['error'] ?? '')),
             'success' => isset($_GET['success']),
         ]);
@@ -68,38 +80,72 @@ class SettingsController extends Controller
 
     private function handleAboutImageUpload(array &$settingsToSave, ?array $file, bool $removeImage): ?string
     {
-        $currentImage = (string) $this->settings->get(self::ABOUT_IMAGE_SETTING_KEY, '');
+        return $this->handleSettingImageUpload(
+            $settingsToSave,
+            $file,
+            $removeImage,
+            self::ABOUT_IMAGE_SETTING_KEY,
+            'about_',
+            'about-image-upload',
+            'about-image-directory'
+        );
+    }
+
+    private function handleScratchImageUpload(array &$settingsToSave, ?array $file, bool $removeImage): ?string
+    {
+        return $this->handleSettingImageUpload(
+            $settingsToSave,
+            $file,
+            $removeImage,
+            self::SCRATCH_IMAGE_SETTING_KEY,
+            'scratch_',
+            'scratch-image-upload',
+            'scratch-image-directory'
+        );
+    }
+
+    private function handleSettingImageUpload(
+        array &$settingsToSave,
+        ?array $file,
+        bool $removeImage,
+        string $settingKey,
+        string $prefix,
+        string $uploadErrorCode,
+        string $directoryErrorCode
+    ): ?string
+    {
+        $currentImage = (string) $this->settings->get($settingKey, '');
         $shouldRemoveCurrentImage = $removeImage;
 
         if (!is_array($file) || ($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
             if ($shouldRemoveCurrentImage) {
-                $this->deleteCurrentAboutImage($currentImage);
-                $settingsToSave[self::ABOUT_IMAGE_SETTING_KEY] = '';
+                $this->deleteCurrentSettingImage($currentImage);
+                $settingsToSave[$settingKey] = '';
             }
 
             return null;
         }
 
         if (($file['error'] ?? UPLOAD_ERR_OK) !== UPLOAD_ERR_OK) {
-            return 'about-image-upload';
+            return $uploadErrorCode;
         }
 
         if (!is_dir(SETTINGS_UPLOADS_PATH) && !mkdir(SETTINGS_UPLOADS_PATH, 0775, true) && !is_dir(SETTINGS_UPLOADS_PATH)) {
-            return 'about-image-directory';
+            return $directoryErrorCode;
         }
 
-        $uploadedImage = \uploadImage($file, SETTINGS_UPLOADS_PATH, 'about_');
+        $uploadedImage = \uploadImage($file, SETTINGS_UPLOADS_PATH, $prefix);
         if ($uploadedImage === false) {
-            return 'about-image-upload';
+            return $uploadErrorCode;
         }
 
-        $this->deleteCurrentAboutImage($currentImage, $uploadedImage);
-        $settingsToSave[self::ABOUT_IMAGE_SETTING_KEY] = $uploadedImage;
+        $this->deleteCurrentSettingImage($currentImage, $uploadedImage);
+        $settingsToSave[$settingKey] = $uploadedImage;
 
         return null;
     }
 
-    private function deleteCurrentAboutImage(string $filename, ?string $except = null): void
+    private function deleteCurrentSettingImage(string $filename, ?string $except = null): void
     {
         $safeFilename = basename(trim($filename));
         if ($safeFilename === '') {
@@ -118,6 +164,8 @@ class SettingsController extends Controller
         return match ($code) {
             'about-image-upload' => "L'image de biographie n'a pas pu etre enregistree. Verifie le format (jpg, png, webp, gif) et la taille maximale de 5 Mo.",
             'about-image-directory' => "Le dossier d'upload de l'image de biographie n'a pas pu etre cree.",
+            'scratch-image-upload' => "L'image a gratter n'a pas pu etre enregistree. Verifie le format (jpg, png, webp, gif) et la taille maximale de 5 Mo.",
+            'scratch-image-directory' => "Le dossier d'upload de l'image a gratter n'a pas pu etre cree.",
             default => null,
         };
     }

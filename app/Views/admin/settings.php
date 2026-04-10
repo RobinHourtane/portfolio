@@ -9,6 +9,7 @@
 <?php endif; ?>
 
 <?php $hasCustomAboutImage = !empty($currentSettings['about_image']); ?>
+<?php $hasCustomScratchImage = !empty($currentSettings['scratch_image']); ?>
 
 <form method="POST" enctype="multipart/form-data" class="settings-form">
     <input type="hidden" name="csrf_token" value="<?= generateCsrfToken() ?>">
@@ -53,6 +54,28 @@
             <label class="settings-inline-option">
                 <input type="checkbox" name="remove_about_image" value="1">
                 Revenir a l'image par defaut
+            </label>
+        <?php endif; ?>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Image a gratter</label>
+
+        <div class="settings-image-preview settings-image-preview-scratch">
+            <img src="<?= escape($currentScratchImageUrl) ?>" alt="Image a gratter actuelle" class="settings-image-preview-image">
+        </div>
+
+        <?php if ($hasCustomScratchImage): ?>
+            <p class="settings-current-file">Fichier actuel : <?= escape($currentSettings['scratch_image']) ?></p>
+        <?php endif; ?>
+
+        <input type="file" name="scratch_image" class="form-control" accept="image/*">
+        <p class="settings-help">Cette image est utilisee dans la scratch-card de la page d'accueil. Formats acceptes : JPG, PNG, WEBP, GIF. Taille max : 5 Mo.</p>
+
+        <?php if ($hasCustomScratchImage): ?>
+            <label class="settings-inline-option">
+                <input type="checkbox" name="remove_scratch_image" value="1">
+                Revenir a l'image par defaut du module
             </label>
         <?php endif; ?>
     </div>
