@@ -9,7 +9,7 @@ database.sql
 !database.sql
 
 # Logs locaux
-/.php-server*.log
+/php-server*.log
 
 # Uploads et médias générés
 public/uploads/
